@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Sis.First.Test": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SIS.First</name>
+    </assembly>
+    <members>
+        <member name="T:SIS.First.AppConfigure.RabbitMQConfiguration">
+            <summary>
+            Настройки для RabbitMQ.
+            </summary>
+        </member>
+        <member name="T:SIS.First.ConfigureSwaggerOptions">
+            <summary>
+            Конфигурация сваггер.
+            </summary>
+            <remarks>
+            Это позволяет определять версию API, чтобы определить Swagger-документ для каждой версии API после
+            <see cref="T:Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider" /> услуга была определена из контейнера услуг.
+            </remarks>
+        </member>
+        <member name="M:SIS.First.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:SIS.First.Controllers.Base.BaseController">
+            <summary>
+            Базовый контроллер.
+            </summary>
+        </member>
+        <member name="T:SIS.First.Controllers.UserController">
+            <summary>
+            Пользователи.
+            </summary>
+        </member>
+        <member name="M:SIS.First.Controllers.UserController.AddUser(SIS.First.Features.Users.Commands.AddUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            Создание пользователя.
+            </summary>
+            <param name="client"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SIS.First.Features.Users.Commands.AddUserCommand.Email">
+            <summary>
+            Адрес почтового ящика.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Features.Users.Commands.AddUserCommand.FirstName">
+            <summary>
+            Имя.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Features.Users.Commands.AddUserCommand.LastName">
+            <summary>
+            Фамилия.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Features.Users.Commands.AddUserCommand.Patronymic">
+            <summary>
+            Отчество.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Features.Users.Commands.AddUserCommand.Phone">
+            <summary>
+            Номер телефона.
+            </summary>
+        </member>
+        <member name="T:SIS.First.FluentValidators.PhoneValidatorExtension">
+            <summary>
+            Расширения для телефонного валидатора.
+            </summary>
+        </member>
+        <member name="M:SIS.First.FluentValidators.PhoneValidatorExtension.PhoneMustMatchRegion``1(FluentValidation.IRuleBuilder{``0,System.String},System.String)">
+            <summary>
+            Поле должно соответствовать номеру телефона заданного региона.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="ruleBuilder"></param>
+            <param name="region"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SIS.First.Infrastructure.Exceptions.BusinessException">
+            <summary>
+            Исключения связанные с бизнес-логикой.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Models.UserDto.FirstName">
+            <summary>
+            Имя.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Models.UserDto.LastName">
+            <summary>
+            Фамилия.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Models.UserDto.Patronymic">
+            <summary>
+            Отчество.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Models.UserDto.Phone">
+            <summary>
+            Номер телефона.
+            </summary>
+        </member>
+        <member name="P:SIS.First.Models.UserDto.Email">
+            <summary>
+            Адрес почтового ящика.
+            </summary>
+        </member>
+        <member name="T:SIS.First.SwaggerDefaultValues">
+            <summary>
+                Представляет фильтр операций Swagger/Swashbuckle, используемый для документирования неявного параметра версии API.
+            </summary>
+            <remarks>
+                Этот <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter" /> необходим только из-за ошибок в <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator" />.
+                Как только они будут исправлены и опубликованы, этот класс можно будет удалить.
+            </remarks>
+        </member>
+        <member name="M:SIS.First.SwaggerDefaultValues.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+                Применяет фильтр к указанной операции, используя заданный контекст.
+            </summary>
+            <param name="operation">Операция, к которой нужно применить фильтр.</param>
+            <param name="context">Текущий контекст фильтра операций.</param>
+        </member>
+    </members>
+</doc>

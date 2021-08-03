@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SIS.Second</name>
+    </assembly>
+    <members>
+        <member name="T:SIS.Second.AppConfigure.RabbitMQConfiguration">
+            <summary>
+            Настройки для RabbitMQ.
+            </summary>
+        </member>
+        <member name="T:SIS.Second.ConfigureSwaggerOptions">
+            <summary>
+            Конфигурация сваггер.
+            </summary>
+            <remarks>
+            Это позволяет определять версию API, чтобы определить Swagger-документ для каждой версии API после
+            <see cref="T:Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider" /> услуга была определена из контейнера услуг.
+            </remarks>
+        </member>
+        <member name="M:SIS.Second.ConfigureSwaggerOptions.Configure(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:SIS.Second.Context.Models.Pagination`1">
+            <summary>
+            Модель для возвращения сущностей одной страницы.
+            </summary>
+            <typeparam name="T"> Тип сущности для пагинации. </typeparam>
+        </member>
+        <member name="M:SIS.Second.Context.Models.Pagination`1.#ctor">
+            <summary>
+            Модель для возвращения сущностей одной страницы.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Context.Models.Pagination`1.Entities">
+            <summary>
+            Сущности.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Context.Models.Pagination`1.TotalCount">
+            <summary>
+            Общее количество.
+            </summary>
+        </member>
+        <member name="T:SIS.Second.Context.SeedData">
+            <summary>
+            Заполнение первоночальных данных.
+            </summary>
+        </member>
+        <member name="M:SIS.Second.Context.SeedData.AddUserIfNeed(SIS.Second.Context.SisContext)">
+            <summary>
+            Добавление пользователя при необходимости.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:SIS.Second.Context.SeedData.AddOrganizationIfNeed(SIS.Second.Context.SisContext)">
+            <summary>
+            Добавление организации при необходимости.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:SIS.Second.Controllers.Base.BaseController">
+            <summary>
+            Базовый контроллер.
+            </summary>
+        </member>
+        <member name="T:SIS.Second.Controllers.OrganizationController">
+            <summary>
+            Организации.
+            </summary>
+        </member>
+        <member name="M:SIS.Second.Controllers.OrganizationController.RefUser(SIS.Second.Features.Organizations.Commands.RefUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            Связь организации и пользователя.
+            </summary>
+            <param name="client"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SIS.Second.Controllers.UserController">
+            <summary>
+            Пользователи.
+            </summary>
+        </member>
+        <member name="M:SIS.Second.Controllers.UserController.Users(SIS.Second.Features.Users.Commands.GetUserCommand,System.Threading.CancellationToken)">
+            <summary>
+            Пагинированный список пользователей.
+            </summary>
+            <param name="client"></param>
+            <param name="token"></param>
+            <returns>Список пользователей.</returns>
+        </member>
+        <member name="M:SIS.Second.Extensions.Context.Migrator.UseAutomaticMigrations``1(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{``0})">
+            <summary>
+            Функция, мигрирующая контекст данных.
+            </summary>
+        </member>
+        <member name="T:SIS.Second.Extensions.Context.PaginationExtensions">
+            <summary>
+            Расширения для пагинации.
+            </summary>
+        </member>
+        <member name="M:SIS.Second.Extensions.Context.PaginationExtensions.ToPaginationAsync``2(System.Linq.IQueryable{``0},System.Int32,System.Int32,AutoMapper.IConfigurationProvider)">
+            <summary>
+            Применение к IQueryable пагинации.
+            </summary>
+            <typeparam name="T">Модель БД.</typeparam>
+            <typeparam name="TDto">Модель Дто.</typeparam>
+            <param name="queryable">Объект запроса.</param>
+            <param name="size">Размер.</param>
+            <param name="offset">Количество пропускаемых объектов.</param>
+            <param name="configurationProvider">Провайдер конфигураций автомаппера для проекции.</param>
+            <returns>Объект <see cref="T:SIS.Second.Context.Models.Pagination`1"/>.</returns>
+        </member>
+        <member name="P:SIS.Second.Features.Organizations.Commands.RefUserCommand.OrganizationId">
+            <summary>
+            Уникальный идентификатор организации.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Organizations.Commands.RefUserCommand.UserId">
+            <summary>
+            Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Commands.GetUserCommand.Count">
+            <summary>
+            Количество запрашиваемых данных.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Commands.GetUserCommand.Offset">
+            <summary>
+            Количество пропускаемых данных.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Commands.GetUserCommand.OrganizationId">
+            <summary>
+            Уникальный идентификатор организации.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Models.UserListDto.Email">
+            <summary>
+            Адрес почтового ящика.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Models.UserListDto.FirstName">
+            <summary>
+            Имя.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Models.UserListDto.LastName">
+            <summary>
+            Фамилия.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Models.UserListDto.Patronymic">
+            <summary>
+            Отчество.
+            </summary>
+        </member>
+        <member name="P:SIS.Second.Features.Users.Models.UserListDto.Phone">
+            <summary>
+            Номер телефона.
+            </summary>
+        </member>
+        <member name="T:SIS.Second.Infrastructure.Exceptions.BusinessException">
+            <summary>
+            Исключения связанные с бизнес-логикой.
+            </summary>
+        </member>
+        <member name="T:SIS.Second.SwaggerDefaultValues">
+            <summary>
+                Представляет фильтр операций Swagger/Swashbuckle, используемый для документирования неявного параметра версии API.
+            </summary>
+            <remarks>
+                Этот <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter" /> необходим только из-за ошибок в <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator" />.
+                Как только они будут исправлены и опубликованы, этот класс можно будет удалить.
+            </remarks>
+        </member>
+        <member name="M:SIS.Second.SwaggerDefaultValues.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+                Применяет фильтр к указанной операции, используя заданный контекст.
+            </summary>
+            <param name="operation">Операция, к которой нужно применить фильтр.</param>
+            <param name="context">Текущий контекст фильтра операций.</param>
+        </member>
+    </members>
+</doc>

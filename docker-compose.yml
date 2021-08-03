@@ -1,0 +1,69 @@
+version: '2'
+
+services:
+  rabbitmq:
+     image: sis-rabbitmq
+     restart: always
+     ports:
+       - 8080:15672
+       - 5672:5672
+     build:
+       context: .
+       dockerfile: ./rabbitmq/Dockerfile
+     environment:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: mysecretpassword
+     networks:
+       - bridgenetwork
+
+  postgresql:
+     image: sis-postgresql
+     restart: always
+     ports:
+       - 5432:5432
+     build:
+       context: .
+       dockerfile: ./postgresql/Dockerfile
+     environment:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: mysecretpassword
+     networks:
+       - bridgenetwork
+
+  sis-first:
+     image: sis-first
+     ports:
+       - 8888:80
+     environment:
+         SIS_FIRST_RABBITMQ__URI: "rabbitmq://rabbitmq/"
+     build:
+       context: .
+       dockerfile: ./src/SIS.First/Dockerfile
+     links:
+       - rabbitmq
+     depends_on:
+       - "rabbitmq"
+     networks:
+       - bridgenetwork
+
+  sis-second:
+     image: sis-second
+     ports:
+       - 8889:80
+     environment:
+         SIS_SECOND_RABBITMQ__URI: "rabbitmq://rabbitmq/"
+         SIS_SECOND_ConnectionStrings__SisTestDatabase: "Host=postgresql;Database=sis_test;Username=postgres;Password=mysecretpassword;Port=5432;"
+     build:
+       context: .
+       dockerfile: ./src/SIS.Second/Dockerfile
+     links:
+       - rabbitmq
+       - postgresql
+     depends_on:
+       - "rabbitmq"
+     networks:
+       - bridgenetwork
+
+networks:
+  bridgenetwork:
+     driver: bridge

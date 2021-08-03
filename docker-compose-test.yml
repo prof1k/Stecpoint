@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  sis.first.test:
+    image: sis.first.test
+    build:
+      context: .
+      dockerfile: ./src/Tests/Sis.First.Test/Dockerfile
+  sis.second.test:
+    image: sis.second.test
+    build:
+      context: .
+      dockerfile: ./src/Tests/Sis.Second.Test/Dockerfile
